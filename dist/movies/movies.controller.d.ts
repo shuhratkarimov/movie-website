@@ -4,9 +4,9 @@ import { UpdateMovieDto } from './dto/update-movie.dto';
 export declare class MoviesController {
     private readonly moviesService;
     constructor(moviesService: MoviesService);
-    create(createMovieDto: CreateMovieDto): string;
-    findAll(): string;
-    findOne(id: string): string;
-    update(id: string, updateMovieDto: UpdateMovieDto): string;
-    remove(id: string): string;
+    create(createMovieDto: CreateMovieDto): Promise<import("./entities/movie.entity").MoviesEntity>;
+    findAll(): Promise<import("./entities/movie.entity").MoviesEntity[]>;
+    findOne(id: string): Promise<import("./entities/movie.entity").MoviesEntity>;
+    update(id: string, updateMovieDto: UpdateMovieDto): Promise<import("./entities/movie.entity").MoviesEntity>;
+    remove(id: string): Promise<string>;
 }

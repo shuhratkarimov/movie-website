@@ -29,13 +29,13 @@ let MoviesController = class MoviesController {
         return this.moviesService.findAll();
     }
     findOne(id) {
-        return this.moviesService.findOne(+id);
+        return this.moviesService.findOne(id);
     }
     update(id, updateMovieDto) {
-        return this.moviesService.update(+id, updateMovieDto);
+        return this.moviesService.update(id, updateMovieDto);
     }
     remove(id) {
-        return this.moviesService.remove(+id);
+        return this.moviesService.remove(id);
     }
 };
 exports.MoviesController = MoviesController;
