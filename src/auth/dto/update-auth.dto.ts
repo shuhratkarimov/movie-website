@@ -4,6 +4,13 @@ import { ApiPropertyOptional } from '@nestjs/swagger';
 
 export class UpdateAuthDto extends PartialType(CreateAuthDto) {
   @ApiPropertyOptional({
+    example: 'john_doe',
+    description: 'Foydalanuvchi nomi',
+    type: String,
+  })
+  fullName?: string;
+  
+  @ApiPropertyOptional({
     example: 'oldPassword123',
     description: 'Joriy (eski) parol',
   })

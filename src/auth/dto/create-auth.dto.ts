@@ -5,6 +5,7 @@ export class CreateAuthDto {
   @ApiProperty({
     example: 'john_doe',
     description: 'Foydalanuvchi nomi',
+    type: String,
   })
   @IsString()
   fullName: string;
@@ -12,6 +13,7 @@ export class CreateAuthDto {
   @ApiProperty({
     example: 'john@example.com',
     description: 'Email manzili',
+    type: String,
   })
   @IsNotEmpty()
   @IsEmail()
@@ -20,6 +22,7 @@ export class CreateAuthDto {
   @ApiProperty({
     example: 'mySecret123',
     description: 'Foydalanuvchi paroli',
+    type: String,
   })
   @IsNotEmpty()
   @IsString()
@@ -28,6 +31,7 @@ export class CreateAuthDto {
   @ApiPropertyOptional({
     example: 123456,
     description: 'Email orqali yuborilgan tasdiqlash kodi (majburiy emas)',
+    type: Number,
   })
   @IsOptional()
   @IsNumber()
