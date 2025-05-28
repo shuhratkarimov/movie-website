@@ -1,32 +1,23 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { CommentsModule } from './comments/comments.module';
-import { Comment } from './comments/entities/comment.entity';
-
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true, 
+      isGlobal:true, envFilePath:'.env'
     }),
-
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: async (config: ConfigService) => ({
-        type: 'postgres',
-        host: config.get('DB_HOST'),
-        port: parseInt(config.get('DB_PORT', '5432')),
-        username: config.get('DB_USERNAME'),
-        password: config.get('DB_PASSWORD'),
-        database: config.get('DB_NAME'),
-        entities: [Comment],
-        synchronize: true,
-        autoLoadEntities: true,
-      }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      username: process.env.DB_USERNAME,
+      port: 5432,
+      host: process.env.DB_HOST,
+      database: process.env.DB_NAME,
+      password: process.env.DB_PASSWORD,
+      autoLoadEntities:true,
+      synchronize:true,
+      ssl: {
+        rejectUnauthorized:false
+      },
     }),
-
-    CommentsModule,
-  ],
+    MoviesModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
